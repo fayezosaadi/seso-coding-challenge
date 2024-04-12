@@ -35,7 +35,7 @@ describe("Log Source Behaviors", () => {
     expect(entry).toBeFalsy();
   });
 
-  test("", async () => {
+  test("It should asynchronously drain log sources and print entries in chronological order", async () => {
     // Mock log source with async pop method
     const logSource = {
       async popAsync() {
