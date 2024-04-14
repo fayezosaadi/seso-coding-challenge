@@ -1,7 +1,7 @@
 "use strict";
 
 const {MinPriorityQueue} = require("@datastructures-js/priority-queue")
-const EventEmitter = require('node:events');
+const EventEmitter = require('events')
 
 module.exports = class LogEntryQueue {
   #queue
