@@ -12,6 +12,8 @@ module.exports = class LogEntryQueue {
   }
 
   init() {
+
+    // Initialize log sources and push their first entries onto the priority queue
     for (const [sourceIndex, logSource] of this.#logSources.entries()) {
       const logEntry = logSource.pop()
       if (logEntry) this.#queue.push({logEntry, sourceIndex})
