@@ -65,9 +65,13 @@ module.exports = class LogEntryQueue {
     this.#hasDrained = {}
 
     this.#eventEmitter.on('batch', async (logSourceId) => {
+      // Check if the log source has not drained
       if (!this.#hasDrained[logSourceId]) {
+        // Set batch readiness flags
         this.#isBatchReady[logSourceId] = false
+        // Fill the batch asynchronously
         this.#logSourcesBatches[logSourceId] = await this.#fillBatch(logSourceId)
+        // Set batch readiness flags
         this.#isBatchReady[logSourceId] = true
       }
     })
